@@ -15,7 +15,7 @@ override.tf.json
 *_override.tf.json
 
 # Ignore local variable definitions
-*.tfvars
+
 *.tfvars.json
 
 # Ignore any backup files created by Terraform
