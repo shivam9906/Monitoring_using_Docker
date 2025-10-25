@@ -7,8 +7,8 @@ resource "aws_instance" "this" {
   user_data              = var.user_data
 
   tags = merge(
-    var.common_tags,     # shared tags (optional)
-    var.tags,            # instance-specific tags
+    var.common_tags, # shared tags (optional)
+    var.tags,        # instance-specific tags
     {
       Name = var.instance_name
     }

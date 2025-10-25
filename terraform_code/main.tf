@@ -23,6 +23,10 @@ module "ec2" {
   key_name       = var.key_name
   user_data      = file("userdata.sh")
   instance_name  = "monitoring-ec2"
+  common_tags    = var.common_tags
+  tags = {
+    Role = "APP server"
+  }
 
 }
 
@@ -40,17 +44,26 @@ module "vpn_ec2" {
   key_name       = var.key_name
   user_data      = "" # AMI already has OpenVPN configured
   instance_name  = "VPN-Server"
-
-  common_tags = {
-    Environment = var.environment
-    Owner       = var.owner
-    Project     = var.project
+  common_tags    = var.common_tags
+  tags = {
+    Role = "This is VPN server for Monitoring"
   }
 
+}
+
+module "test" {
+  source         = "./modules/ec2"
+  ami_id         = var.vpn_ami_id # OpenVPN Access Server AMI in AWS
+  instance_type  = var.vpn_instance_type
+  subnet_id      = module.vpc.public_subnets[0]
+  security_group = module.vpn_sg.sg_id
+  key_name       = var.key_name
+  user_data      = "" # AMI already has OpenVPN configured
+  instance_name  = "testing server"
+
+  common_tags = var.common_tags
   tags = {
-    Role        = "vpn"
-    Backup      = "true"
-    Description = "VPN Server for ${var.project}"
+    Role = "For Testing"
   }
 }
 

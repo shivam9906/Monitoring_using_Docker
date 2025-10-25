@@ -26,6 +26,6 @@ variable "vpn_ami_id" {
   type = string
 }
 
-variable "environment" {}
-variable "owner" {}
-variable "project" {}
+variable "common_tags" {
+  type = map(string)
+}

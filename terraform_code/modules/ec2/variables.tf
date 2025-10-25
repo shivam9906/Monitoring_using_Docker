@@ -9,10 +9,10 @@ variable "instance_name" {
   type = string
 }
 variable "common_tags" {
-  type    = map(string)
-  default = {}
+  type = map(string)
+
 }
 variable "tags" {
-  type    = map(string)
-  default = {}
+  type = map(string)
+
 }
