@@ -21,6 +21,6 @@ vpn_ami_id        = "ami-02d26659fd82cf299" # OpenVPN Access Server
 
 common_tags = {
   Environment = "prod"
-  Owner       = "shivam"
+  Owner       = "owner name "
   Project     = "Monitoring_stack"
 }
